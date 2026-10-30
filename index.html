@@ -2,41 +2,440 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KCD Mil-Tech | Portfolio & Showroom</title>
+    <title>KCD Mil-Tech | Control Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
-        header { text-align: center; padding: 40px 0; border-bottom: 1px solid #334155; }
-        h1 { color: #38bdf8; margin-bottom: 5px; }
-        p.subtitle { color: #94a3b8; font-size: 1.1em; }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card { background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; }
-        .card h3 { color: #38bdf8; margin-top: 0; }
-        .card p { color: #cbd5e1; font-size: 0.95em; }
-        .tag { display: inline-block; background: #0284c7; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Sử dụng ảnh nền xanh bo mạch của bạn */
+            background: linear-gradient(rgba(8, 12, 28, 0.7), rgba(8, 12, 28, 0.7)), 
+                        url('image_6.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- THANH HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(8, 14, 30, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00f3ff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Góc trên bên trái: Logo gốc & KCD MIL-TECH */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 45px;
+            height: 45px;
+            filter: drop-shadow(0 0 8px #00f3ff);
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .brand-name span {
+            color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+        }
+
+        /* Góc trên bên phải: Nút Contact nổi bật */
+        .contact-btn {
+            background: linear-gradient(135deg, #00f3ff, #0066ff);
+            color: #050b14;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.9);
+            color: #ffffff;
+        }
+
+        /* --- PHẦN NỘI DUNG CHÍNH (Đã bỏ chữ lớn ở giữa) --- */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* DANH SÁCH DỰ ÁN */
+        .projects-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(10, 18, 38, 0.8);
+            border: 1.5px solid rgba(0, 243, 255, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover {
+            border-color: #00f3ff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.35);
+        }
+
+        .card h3 {
+            color: #00f3ff;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
+        }
+
+        .card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(0, 243, 255, 0.1);
+            color: #00f3ff;
+            border: 1.1px solid rgba(0, 243, 255, 0.35);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* --- POPUP CARD VISIT THÔNG TIN LIÊN HỆ --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .visiting-card {
+            background: linear-gradient(135deg, #070e20, #0a142e);
+            border: 2px solid #00f3ff;
+            border-radius: 20px;
+            padding: 35px 30px;
+            width: 90%;
+            max-width: 480px;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.4);
+            animation: modalFade 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+
+        /* Hiệu ứng vi mạch nhỏ bên trong Card */
+        .visiting-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image_6.png') no-repeat center center;
+            background-size: cover;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #a0aec0;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            z-index: 10;
+        }
+
+        .close-btn:hover { color: #00f3ff; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1.5px solid rgba(0, 243, 255, 0.25);
+            padding-bottom: 15px;
+        }
+
+        .card-logo {
+            width: 55px;
+            height: 55px;
+            filter: drop-shadow(0 0 5px #00f3ff);
+        }
+
+        .card-title h2 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .card-title p {
+            color: #00f3ff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* Số điện thoại & Thao tác */
+        .phone-section {
+            background: rgba(0, 243, 255, 0.07);
+            border: 1px dashed rgba(0, 243, 255, 0.3);
+            border-radius: 10px;
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .phone-num {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #00f3ff;
+            letter-spacing: 1px;
+        }
+
+        .phone-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-action {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-action:hover {
+            background: #00f3ff;
+            color: #050b14;
+            border-color: #00f3ff;
+            box-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+        }
+
+        /* Danh sách mạng xã hội */
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .social-link i {
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Hiệu ứng rê chuột riêng cho từng mạng */
+        .social-link.zalo:hover { background: #0068ff; border-color: #0068ff; }
+        .social-link.fb:hover { background: #1877f2; border-color: #1877f2; }
+        .social-link.gmail:hover { background: #ea4335; border-color: #ea4335; }
+        .social-link:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); }
+
+        .full-width {
+            grid-column: span 2;
+        }
     </style>
 </head>
 <body>
+
+    <!-- THANH HEADER -->
     <header>
-        <h1>KCD MIL-TECH SHOWROOM</h1>
-        <p class="subtitle">Hệ thống Trưng bày Dự án IoT & Hardware</p>
+        <a href="#" class="brand">
+            <!-- Sử dụng logo KD nguyên bản từ ảnh nền -->
+            <img src="image_6.png" alt="Logo KCD" class="brand-logo">
+            <div class="brand-name">KCD <span>MIL-TECH</span></div>
+        </a>
+
+        <a class="contact-btn" onclick="openContact()">
+            <i class="fa-solid fa-address-card"></i> Thông Liên Hệ
+        </a>
     </header>
-    <div class="container">
-        <h2>Dự Án Nổi Bật</h2>
-        <div class="grid">
+
+    <!-- NỘI DUNG CHÍNH (Đã lược bỏ chữ showroom to ở giữa) -->
+    <main class="main-content">
+        <div class="projects-container">
             <div class="card">
-                <h3>Robot Điều Khiển IoT</h3>
-                <p>Robot tự chế sử dụng ESP32 điều khiển qua Web Server thời gian thực.</p>
-                <span class="tag">ESP32</span> <span class="tag">C++</span> <span class="tag">IoT</span>
+                <h3><i class="fa-solid fa-robot"></i> Robot Điều Khiển IoT</h3>
+                <p>Robot tự chế sử dụng ESP32 kết nối Web Server điều khiển thời gian thực qua giao diện web cá nhân.</p>
+                <div class="tags">
+                    <span class="tag">ESP32</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">IoT</span>
+                </div>
             </div>
+
             <div class="card">
-                <h3>Trạm Server IoT Tại Nhà</h3>
-                <p>Hệ thống xử lý trung tâm chạy trên Raspberry Pi 3 kết nối MQTT Broker.</p>
-                <span class="tag">Raspberry Pi</span> <span class="tag">MQTT</span> <span class="tag">Linux</span>
+                <h3><i class="fa-solid fa-server"></i> Trạm Server IoT Tại Nhà</h3>
+                <p>Hệ thống máy chủ trung tâm vận hành trên Raspberry Pi 3 kết nối MQTT Broker và CSDL SQLite.</p>
+                <div class="tags">
+                    <span class="tag">Raspberry Pi</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">MQTT</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- POPUP CARD VISIT THÔNG TIN LIÊN HỆ -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="visiting-card">
+            <span class="close-btn" onclick="closeContact()">&times;</span>
+            
+            <div class="card-header">
+                <img src="image_6.png" alt="KD logo" class="card-logo">
+                <div class="card-title">
+                    <h2>TRẦN HOÀI NAM</h2>
+                    <p>Admin / Developer</p>
+                </div>
+            </div>
+
+            <div class="phone-section">
+                <span class="phone-num">0865.307.775</span>
+                <div class="phone-actions">
+                    <button class="btn-action" onclick="copyPhone()"><i class="fa-regular fa-copy"></i> Sao chép</button>
+                    <a href="tel:0865307775" class="btn-action"><i class="fa-solid fa-phone"></i> Gọi điện</a>
+                </div>
+            </div>
+
+            <div class="links-grid">
+                <!-- Link Zalo -->
+                <a href="https://zalo.me/0865307775" target="_blank" class="social-link zalo">
+                    <i class="fa-solid fa-comment-dots"></i> Nhắn Zalo
+                </a>
+                
+                <!-- Link Facebook -->
+                <a href="https://facebook.com" target="_blank" class="social-link fb">
+                    <i class="fa-brands fa-facebook-f"></i> Facebook
+                </a>
+                
+                <!-- Link Gmail -->
+                <a href="mailto:namkcd.dev@gmail.com" class="social-link gmail full-width">
+                    <i class="fa-regular fa-envelope"></i> Gửi Gmail: namkcd.dev@gmail.com
+                </a>
             </div>
         </div>
     </div>
+
+    <!-- SCRIPT TƯƠNG TÁC -->
+    <script>
+        function openContact() {
+            document.getElementById('contactModal').style.display = 'flex';
+        }
+
+        function closeContact() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // Sao chép số điện thoại nhanh
+        function copyPhone() {
+            navigator.clipboard.writeText('0865307775');
+            alert('Đã sao chép số điện thoại: 0865307775');
+        }
+
+        // Đóng bảng thông tin khi click ra ngoài Card
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
