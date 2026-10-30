@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KCD Mil-Tech | Portfolio & Showroom</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
+        header { text-align: center; padding: 40px 0; border-bottom: 1px solid #334155; }
+        h1 { color: #38bdf8; margin-bottom: 5px; }
+        p.subtitle { color: #94a3b8; font-size: 1.1em; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; }
+        .card h3 { color: #38bdf8; margin-top: 0; }
+        .card p { color: #cbd5e1; font-size: 0.95em; }
+        .tag { display: inline-block; background: #0284c7; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>KCD MIL-TECH SHOWROOM</h1>
+        <p class="subtitle">Hệ thống Trưng bày Dự án IoT & Hardware</p>
+    </header>
+    <div class="container">
+        <h2>Dự Án Nổi Bật</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Robot Điều Khiển IoT</h3>
+                <p>Robot tự chế sử dụng ESP32 điều khiển qua Web Server thời gian thực.</p>
+                <span class="tag">ESP32</span> <span class="tag">C++</span> <span class="tag">IoT</span>
+            </div>
+            <div class="card">
+                <h3>Trạm Server IoT Tại Nhà</h3>
+                <p>Hệ thống xử lý trung tâm chạy trên Raspberry Pi 3 kết nối MQTT Broker.</p>
+                <span class="tag">Raspberry Pi</span> <span class="tag">MQTT</span> <span class="tag">Linux</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
