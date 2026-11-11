@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KCD Mil-Tech | Control Panel</title>
+    <title>KCD Mil-Tech | Ecosystem</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,9 +14,9 @@
         }
 
         body {
-            /* Sử dụng ảnh nền xanh bo mạch của bạn */
-            background: linear-gradient(rgba(8, 12, 28, 0.7), rgba(8, 12, 28, 0.7)), 
-                        url('image_6.png') no-repeat center center fixed;
+            /* Đã cập nhật đúng tên file ảnh bạn vừa upload: logoxanh.jpg */
+            background: linear-gradient(rgba(8, 12, 28, 0.75), rgba(8, 12, 28, 0.85)), 
+                        url('logoxanh.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #ffffff;
             min-height: 100vh;
@@ -38,7 +38,6 @@
             z-index: 1000;
         }
 
-        /* Góc trên bên trái: Logo gốc & KCD MIL-TECH */
         .brand {
             display: flex;
             align-items: center;
@@ -66,7 +65,6 @@
             text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
         }
 
-        /* Góc trên bên phải: Nút Contact nổi bật */
         .contact-btn {
             background: linear-gradient(135deg, #00f3ff, #0066ff);
             color: #050b14;
@@ -88,54 +86,155 @@
             color: #ffffff;
         }
 
-        /* --- PHẦN NỘI DUNG CHÍNH (Đã bỏ chữ lớn ở giữa) --- */
-        .main-content {
+        /* --- PHẦN NỘI DUNG CHÍNH --- */
+        .main-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 30px auto;
+            padding: 0 20px;
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            padding: 40px 20px;
+            gap: 35px;
         }
 
-        /* DANH SÁCH DỰ ÁN */
-        .projects-container {
-            max-width: 1100px;
+        /* DUY NHẤT 1 NÚT ĐIỀU HƯỚNG SANG IOT CONTROL SERVER */
+        .server-single-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .server-card {
+            background: rgba(10, 18, 38, 0.85);
+            border: 2px solid rgba(0, 243, 255, 0.4);
+            border-radius: 14px;
+            padding: 18px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #ffffff;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             width: 100%;
-            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .server-card:hover {
+            border-color: #00f3ff;
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+            background: rgba(14, 25, 54, 0.9);
+        }
+
+        .server-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .server-info i {
+            font-size: 2.2rem;
+            color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        .server-text h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 3px;
+        }
+
+        .server-text p {
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        .server-arrow {
+            color: #00f3ff;
+            font-size: 1.3rem;
+        }
+
+        /* KHU VỰC TRƯNG BÀY DỰ ÁN */
+        .showcase-section {
+            background: rgba(10, 18, 38, 0.6);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 16px;
+            padding: 30px 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            text-align: center;
+            color: #00f3ff;
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            color: #a0aec0;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: #00f3ff;
+            color: #050b14;
+            border-color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+        }
+
+        .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
-        .card {
-            background: rgba(10, 18, 38, 0.8);
-            border: 1.5px solid rgba(0, 243, 255, 0.3);
+        .project-card {
+            background: rgba(7, 14, 32, 0.85);
+            border: 1px solid rgba(0, 243, 255, 0.25);
             border-radius: 12px;
-            padding: 25px;
-            backdrop-filter: blur(8px);
+            padding: 22px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
-        .card:hover {
+        .project-card:hover {
             border-color: #00f3ff;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.35);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 243, 255, 0.25);
         }
 
-        .card h3 {
+        .project-card h4 {
             color: #00f3ff;
-            margin-bottom: 12px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
-            text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
         }
 
-        .card p {
+        .project-card p {
             color: #cbd5e1;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.5;
             margin-bottom: 15px;
         }
@@ -149,10 +248,10 @@
         .tag {
             background: rgba(0, 243, 255, 0.1);
             color: #00f3ff;
-            border: 1.1px solid rgba(0, 243, 255, 0.35);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.78rem;
             font-weight: 600;
         }
 
@@ -184,7 +283,6 @@
             overflow: hidden;
         }
 
-        /* Hiệu ứng vi mạch nhỏ bên trong Card */
         .visiting-card::before {
             content: '';
             position: absolute;
@@ -192,7 +290,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('image_6.png') no-repeat center center;
+            background: url('logoxanh.jpg') no-repeat center center;
             background-size: cover;
             opacity: 0.08;
             pointer-events: none;
@@ -247,7 +345,6 @@
             margin-top: 2px;
         }
 
-        /* Số điện thoại & Thao tác */
         .phone-section {
             background: rgba(0, 243, 255, 0.07);
             border: 1px dashed rgba(0, 243, 255, 0.3);
@@ -294,7 +391,6 @@
             box-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
         }
 
-        /* Danh sách mạng xã hội */
         .links-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -322,7 +418,6 @@
             text-align: center;
         }
 
-        /* Hiệu ứng rê chuột riêng cho từng mạng */
         .social-link.zalo:hover { background: #0068ff; border-color: #0068ff; }
         .social-link.fb:hover { background: #1877f2; border-color: #1877f2; }
         .social-link.gmail:hover { background: #ea4335; border-color: #ea4335; }
@@ -338,8 +433,7 @@
     <!-- THANH HEADER -->
     <header>
         <a href="#" class="brand">
-            <!-- Sử dụng logo KD nguyên bản từ ảnh nền -->
-            <img src="image_6.png" alt="Logo KCD" class="brand-logo">
+            <img src="logoxanh.jpg" alt="Logo KCD" class="brand-logo">
             <div class="brand-name">KCD <span>MIL-TECH</span></div>
         </a>
 
@@ -348,29 +442,79 @@
         </a>
     </header>
 
-    <!-- NỘI DUNG CHÍNH (Đã lược bỏ chữ showroom to ở giữa) -->
-    <main class="main-content">
-        <div class="projects-container">
-            <div class="card">
-                <h3><i class="fa-solid fa-robot"></i> Robot Điều Khiển IoT</h3>
-                <p>Robot tự chế sử dụng ESP32 kết nối Web Server điều khiển thời gian thực qua giao diện web cá nhân.</p>
-                <div class="tags">
-                    <span class="tag">ESP32</span>
-                    <span class="tag">C++</span>
-                    <span class="tag">IoT</span>
+    <main class="main-container">
+
+        <!-- NÚT DUY NHẤT CHUYỂN SANG IOT CONTROL SERVER -->
+        <div class="server-single-container">
+            <a href="http://control.kcdmil-tech.id.vn" class="server-card" target="_blank">
+                <div class="server-info">
+                    <i class="fa-solid fa-sliders"></i>
+                    <div class="server-text">
+                        <h4>IoT Control Server</h4>
+                        <p>Trạm điều khiển, lưu trữ & giám sát tự động</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square server-arrow"></i>
+            </a>
+        </div>
+
+        <!-- PHẦN CHÍNH: CHƯƠNG TRÌNH TRƯNG BÀY DỰ ÁN -->
+        <section class="showcase-section">
+            <h3 class="section-title"><i class="fa-solid fa-microchip"></i> Danh Mục Dự Án</h3>
+
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab('design')">
+                    <i class="fa-solid fa-compass-drafting"></i> 1. Design (Tự Thiết Kế)
+                </button>
+                <button class="tab-btn" onclick="switchTab('develop')">
+                    <i class="fa-solid fa-code"></i> 2. Develop (Phát Triển)
+                </button>
+            </div>
+
+            <!-- NỘI DUNG MỤC 1: DESIGN -->
+            <div id="design-projects" class="projects-grid">
+                <div class="project-card">
+                    <h4><i class="fa-solid fa-vr-cardboard"></i> Thiết Kế Bo Mạch ESP32</h4>
+                    <p>Sơ đồ nguyên lý và layout PCB mạch nguồn hạ áp tích hợp cảm biến nhiệt độ DHT22.</p>
+                    <div class="tags">
+                        <span class="tag">PCB Design</span>
+                        <span class="tag">EasyEDA</span>
+                        <span class="tag">Hardware</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h4><i class="fa-solid fa-cubes"></i> Vỏ Tản Nhiệt Pi 3 3D</h4>
+                    <p>Mô hình 3D vỏ tản nhiệt nhôm nguyên khối tích hợp quạt làm mát $5\text{V}$ cho Raspberry Pi 3.</p>
+                    <div class="tags">
+                        <span class="tag">CAD 3D</span>
+                        <span class="tag">Mechanical</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fa-solid fa-server"></i> Trạm Server IoT Tại Nhà</h3>
-                <p>Hệ thống máy chủ trung tâm vận hành trên Raspberry Pi 3 kết nối MQTT Broker và CSDL SQLite.</p>
-                <div class="tags">
-                    <span class="tag">Raspberry Pi</span>
-                    <span class="tag">Linux</span>
-                    <span class="tag">MQTT</span>
+            <!-- NỘI DUNG MỤC 2: DEVELOP -->
+            <div id="develop-projects" class="projects-grid" style="display: none;">
+                <div class="project-card">
+                    <h4><i class="fa-solid fa-robot"></i> Firmware Robot ESP32</h4>
+                    <p>Bộ mã nguồn C++ điều khiển chuyển động động cơ bước và phát Wi-Fi AP qua lệnh Web.</p>
+                    <div class="tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">ESP32</span>
+                        <span class="tag">Arduino</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h4><i class="fa-solid fa-network-wired"></i> MQTT Telemetry Broker</h4>
+                    <p>Hệ thống nhận và đẩy dữ liệu cảm biến liên tục về máy chủ Raspberry Pi 3 theo chu kỳ.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">MQTT</span>
+                        <span class="tag">Linux</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
     </main>
 
     <!-- POPUP CARD VISIT THÔNG TIN LIÊN HỆ -->
@@ -379,7 +523,7 @@
             <span class="close-btn" onclick="closeContact()">&times;</span>
             
             <div class="card-header">
-                <img src="image_6.png" alt="KD logo" class="card-logo">
+                <img src="logoxanh.jpg" alt="KD logo" class="card-logo">
                 <div class="card-title">
                     <h2>TRẦN HOÀI NAM</h2>
                     <p>Admin / Developer</p>
@@ -395,19 +539,16 @@
             </div>
 
             <div class="links-grid">
-                <!-- Link Zalo -->
                 <a href="https://zalo.me/0865307775" target="_blank" class="social-link zalo">
                     <i class="fa-solid fa-comment-dots"></i> Nhắn Zalo
                 </a>
                 
-                <!-- Link Facebook -->
                 <a href="https://facebook.com" target="_blank" class="social-link fb">
                     <i class="fa-brands fa-facebook-f"></i> Facebook
                 </a>
                 
-                <!-- Link Gmail -->
-                <a href="mailto:namkcd.dev@gmail.com" class="social-link gmail full-width">
-                    <i class="fa-regular fa-envelope"></i> Gửi Gmail: namkcd.dev@gmail.com
+                <a href="mailto:knightsvip2005@gmail.com" class="social-link gmail full-width">
+                    <i class="fa-regular fa-envelope"></i> Gmail: knightsvip2005@gmail.com
                 </a>
             </div>
         </div>
@@ -423,13 +564,29 @@
             document.getElementById('contactModal').style.display = 'none';
         }
 
-        // Sao chép số điện thoại nhanh
         function copyPhone() {
             navigator.clipboard.writeText('0865307775');
             alert('Đã sao chép số điện thoại: 0865307775');
         }
 
-        // Đóng bảng thông tin khi click ra ngoài Card
+        function switchTab(tabName) {
+            const designGrid = document.getElementById('design-projects');
+            const developGrid = document.getElementById('develop-projects');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (tabName === 'design') {
+                designGrid.style.display = 'grid';
+                developGrid.style.display = 'none';
+                buttons[0].classList.add('active');
+            } else {
+                designGrid.style.display = 'none';
+                developGrid.style.display = 'grid';
+                buttons[1].classList.add('active');
+            }
+        }
+
         window.onclick = function(event) {
             const modal = document.getElementById('contactModal');
             if (event.target == modal) {
