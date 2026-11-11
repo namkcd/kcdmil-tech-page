@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KCD Mil-Tech | Ecosystem</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Nhúng Font phá cách góc cạnh kiểu Valorant -->
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            /* Đã cập nhật đúng tên file ảnh bạn vừa upload: logoxanh.jpg */
             background: linear-gradient(rgba(8, 12, 28, 0.75), rgba(8, 12, 28, 0.85)), 
                         url('logoxanh.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -22,6 +22,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         /* --- THANH HEADER --- */
@@ -29,7 +30,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 12px 5%;
             background: rgba(8, 14, 30, 0.85);
             backdrop-filter: blur(10px);
             border-bottom: 2px solid #00f3ff;
@@ -41,28 +42,43 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
 
+        /* CẮT TỰ ĐỘNG LẤY NGUYÊN LOGO TRÒN Ở GIỮA, BỎ KHUNG HÌNH CHỮ NHẬT */
         .brand-logo {
-            width: 45px;
-            height: 45px;
-            filter: drop-shadow(0 0 8px #00f3ff);
-            object-fit: contain;
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            clip-path: circle(40% at center); /* Cắt tròn tập trung vào biểu tượng KD */
+            filter: drop-shadow(0 0 10px #00f3ff);
+            border: 2px solid #00f3ff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
 
+        .brand:hover .brand-logo {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 18px #00f3ff);
+        }
+
+        /* FONT CHỮ PHÁ CÁCH PHONG CÁCH VALORANT / MIL-TECH */
         .brand-name {
-            font-size: 1.6rem;
-            font-weight: 800;
+            font-family: 'Orbitron', 'Teko', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
             color: #ffffff;
-            letter-spacing: 1.5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            font-style: italic; /* Nghiêng phá cách góc cạnh */
+            text-shadow: 2px 2px 0px #000, 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .brand-name span {
             color: #00f3ff;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+            text-shadow: 2px 2px 0px #000, 0 0 15px #00f3ff, 0 0 30px #00f3ff;
+            font-style: normal;
         }
 
         .contact-btn {
@@ -78,6 +94,9 @@
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
             transition: all 0.3s ease;
             cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         .contact-btn:hover {
@@ -98,7 +117,6 @@
             gap: 35px;
         }
 
-        /* DUY NHẤT 1 NÚT ĐIỀU HƯỚNG SANG IOT CONTROL SERVER */
         .server-single-container {
             display: flex;
             justify-content: center;
@@ -141,9 +159,11 @@
         }
 
         .server-text h4 {
-            font-size: 1.2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
             color: #ffffff;
             margin-bottom: 3px;
+            letter-spacing: 1px;
         }
 
         .server-text p {
@@ -156,7 +176,6 @@
             font-size: 1.3rem;
         }
 
-        /* KHU VỰC TRƯNG BÀY DỰ ÁN */
         .showcase-section {
             background: rgba(10, 18, 38, 0.6);
             border: 1px solid rgba(0, 243, 255, 0.2);
@@ -168,8 +187,9 @@
         .section-title {
             text-align: center;
             color: #00f3ff;
-            font-size: 1.6rem;
-            letter-spacing: 1.5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
             margin-bottom: 25px;
             text-transform: uppercase;
             text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
@@ -194,6 +214,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
         }
 
         .tab-btn.active, .tab-btn:hover {
@@ -225,7 +247,7 @@
 
         .project-card h4 {
             color: #00f3ff;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -255,7 +277,7 @@
             font-weight: 600;
         }
 
-        /* --- POPUP CARD VISIT THÔNG TIN LIÊN HỆ --- */
+        /* --- POPUP CARD VISIT --- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -283,24 +305,6 @@
             overflow: hidden;
         }
 
-        .visiting-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('logoxanh.jpg') no-repeat center center;
-            background-size: cover;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        @keyframes modalFade {
-            from { opacity: 0; transform: scale(0.9) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
         .close-btn {
             position: absolute;
             top: 15px;
@@ -326,13 +330,16 @@
         .card-logo {
             width: 55px;
             height: 55px;
-            filter: drop-shadow(0 0 5px #00f3ff);
+            object-fit: cover;
+            clip-path: circle(40% at center);
+            filter: drop-shadow(0 0 8px #00f3ff);
         }
 
         .card-title h2 {
-            font-size: 1.6rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
             color: #ffffff;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
         }
 
@@ -444,7 +451,6 @@
 
     <main class="main-container">
 
-        <!-- NÚT DUY NHẤT CHUYỂN SANG IOT CONTROL SERVER -->
         <div class="server-single-container">
             <a href="http://control.kcdmil-tech.id.vn" class="server-card" target="_blank">
                 <div class="server-info">
@@ -458,7 +464,6 @@
             </a>
         </div>
 
-        <!-- PHẦN CHÍNH: CHƯƠNG TRÌNH TRƯNG BÀY DỰ ÁN -->
         <section class="showcase-section">
             <h3 class="section-title"><i class="fa-solid fa-microchip"></i> Danh Mục Dự Án</h3>
 
@@ -471,7 +476,6 @@
                 </button>
             </div>
 
-            <!-- NỘI DUNG MỤC 1: DESIGN -->
             <div id="design-projects" class="projects-grid">
                 <div class="project-card">
                     <h4><i class="fa-solid fa-vr-cardboard"></i> Thiết Kế Bo Mạch ESP32</h4>
@@ -492,7 +496,6 @@
                 </div>
             </div>
 
-            <!-- NỘI DUNG MỤC 2: DEVELOP -->
             <div id="develop-projects" class="projects-grid" style="display: none;">
                 <div class="project-card">
                     <h4><i class="fa-solid fa-robot"></i> Firmware Robot ESP32</h4>
@@ -517,7 +520,7 @@
 
     </main>
 
-    <!-- POPUP CARD VISIT THÔNG TIN LIÊN HỆ -->
+    <!-- POPUP CARD VISIT -->
     <div class="modal-overlay" id="contactModal">
         <div class="visiting-card">
             <span class="close-btn" onclick="closeContact()">&times;</span>
@@ -554,7 +557,6 @@
         </div>
     </div>
 
-    <!-- SCRIPT TƯƠNG TÁC -->
     <script>
         function openContact() {
             document.getElementById('contactModal').style.display = 'flex';
